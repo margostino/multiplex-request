@@ -17,9 +17,11 @@ case ${command} in
   ;;
 
 "create-pr-repo-2")
+  rm -rf repo-1/.temp
+  mkdir repo-1/.temp
+  cd repo-1/.temp
   git clone git@github.com:margostino/multiplex-request.git
   ls -la
-  echo "all tests passed!"
   ;;
 
 "build")
