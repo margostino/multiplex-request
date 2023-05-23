@@ -28,7 +28,7 @@ jobs:
       - name: who am i?
         run: |
           whoami
-          cd /home/runner/work
+          cd /home/runner/.ssh
           ls -la
         shell: bash
 
