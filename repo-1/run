@@ -21,7 +21,8 @@ case ${command} in
   rm -rf repo-1/.temp
   mkdir repo-1/.temp
   cd repo-1/.temp
-#  git clone git@github.com:margostino/multiplex-request.git
+  git clone git@github.com:margostino/multiplex-request.git
+  echo "verifying folder..."
   ls -la
   pwd
   echo "repo-2 cloned!"
