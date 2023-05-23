@@ -27,7 +27,7 @@ case ${command} in
 
 "update-schema")
   echo "updating schema..."
-  cd repo-1/.temp
+  cd repo-1
 #  mv repo-1/schema.json repo-1/.temp/multiplex-request/repo-2/schema.json
 #  cd repo-1/.temp/multiplex-request/repo-2/schema.json
   ls -la
