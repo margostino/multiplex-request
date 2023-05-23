@@ -28,7 +28,7 @@ jobs:
       - name: who am i?
         run: |
           whoami
-          ls -al ~/.ssh
+          sudo ls -al ~/.ssh
         shell: bash
 
       - name: run tests REPO-1
