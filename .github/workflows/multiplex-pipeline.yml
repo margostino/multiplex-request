@@ -26,7 +26,10 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: who am i?
-        run: whoami
+        run: |
+          whoami
+          cd /home/runner/work
+          ls -la
         shell: bash
 
       - name: run tests REPO-1
