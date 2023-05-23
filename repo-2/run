@@ -1,0 +1,30 @@
+#!/bin/bash
+
+SCRIPT_PATH="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+command=$1
+shift
+
+case ${command} in
+"schema")
+  echo "generating schema..."
+  sleep 2
+  echo "all tests passed!"
+  ;;
+
+"tests")
+  echo "running tests..."
+  sleep 2
+  echo "all tests passed!"
+  ;;
+
+"build")
+    echo "building app..."
+    sleep 2
+    echo "build done!"
+  ;;
+
+*)
+  echo 'Invalid command'
+  exit 1
+  ;;
+esac

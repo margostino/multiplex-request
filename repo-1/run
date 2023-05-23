@@ -1,0 +1,35 @@
+#!/bin/bash
+
+SCRIPT_PATH="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+command=$1
+shift
+
+case ${command} in
+"tests")
+  echo "running tests..."
+  sleep 2
+  echo "all tests passed!"
+  ;;
+
+"schema")
+  echo "generating schema..."
+  ./repo-1/scripts/generate-schema.sh
+  ;;
+
+"create-pr-repo-2")
+  git clone git@github.com:margostino/multiplex-request.git
+  ls -la
+  echo "all tests passed!"
+  ;;
+
+"build")
+    echo "building app..."
+    sleep 2
+    echo "build done!"
+  ;;
+
+*)
+  echo 'Invalid command'
+  exit 1
+  ;;
+esac

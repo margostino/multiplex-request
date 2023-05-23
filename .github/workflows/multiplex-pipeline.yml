@@ -25,8 +25,14 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      - name: Run script
+      - name: run tests REPO-1
         run: |
-          chmod +x ./run
-          ./run tests
+          chmod +x ./repo-1/run
+          ./repo-1/run tests
+        shell: bash
+
+      - name: generate schema REPO-1
+        run: |
+          chmod +x ./repo-1/run
+          ./repo-1/run schema
         shell: bash
