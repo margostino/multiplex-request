@@ -18,13 +18,24 @@ case ${command} in
 
 "clone-repo-2")
   echo "cloning repo-2..."
-  export GIT_BRANCH_REPO_1=$(git rev-parse --abbrev-ref HEAD)
+  export GIT_BRANCH_REPOS=$(git rev-parse --abbrev-ref HEAD)
   rm -rf repo-1/.temp
   mkdir repo-1/.temp
   cd repo-1/.temp
   git clone git@github.com:margostino/multiplex-request.git
   cd multiplex-request
-  export GIT_BRANCH_REPO_2=$(git rev-parse --abbrev-ref HEAD)
+
+  BRANCH_EXIST_IN_REPO_2=$(git checkout ${GIT_BRANCH_REPOS} 2>&1)
+
+  if [[ ${BRANCH_EXIST_IN_REPO_2} == "error"* ]]; then
+    echo "branch ${GIT_BRANCH_REPOS} does not exist in repo-2"
+    git checkout -b ${GIT_BRANCH_REPOS}
+    echo "branch created"
+  else
+    echo "branch ${GIT_BRANCH_REPOS} already exists in repo-2"
+    git checkout ${GIT_BRANCH_REPOS}
+  fi
+
   echo "repo-1 branch: ${GIT_BRANCH_REPO_1}"
   echo "repo-2 branch: ${GIT_BRANCH_REPO_2}"
   echo "repo-2 cloned!"
