@@ -32,7 +32,11 @@ jobs:
         shell: bash
 
       - name: generate schema REPO-1
+        run: ./repo-1/run schema
+        shell: bash
+
+      - name: clone & update schema into REPO-2
         run: |
-          chmod +x ./repo-1/run
-          ./repo-1/run schema
+          ./repo-1/run clone
+          ./repo-1/run update-schema
         shell: bash

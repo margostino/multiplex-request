@@ -16,12 +16,19 @@ case ${command} in
   ./repo-1/scripts/generate-schema.sh
   ;;
 
-"create-pr-repo-2")
+"clone-repo-2")
   rm -rf repo-1/.temp
   mkdir repo-1/.temp
   cd repo-1/.temp
   git clone git@github.com:margostino/multiplex-request.git
   ls -la
+  ;;
+
+"update-schema")
+  mv repo-1/schema.json repo-1/.temp/multiplex-request/repo-2/schema.json
+  cd repo-1/.temp/multiplex-request/repo-2/schema.json
+  ls -la
+  echo "schema updated!"
   ;;
 
 "build")
