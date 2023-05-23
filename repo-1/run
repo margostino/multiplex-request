@@ -22,13 +22,11 @@ case ${command} in
   mkdir repo-1/.temp
   cd repo-1/.temp
   git clone git@github.com:margostino/multiplex-request.git
-  echo "verifying folder..."
-  ls -la
-  pwd
   echo "repo-2 cloned!"
   ;;
 
 "update-schema")
+  echo "updating schema..."
   mv repo-1/schema.json repo-1/.temp/multiplex-request/repo-2/schema.json
   cd repo-1/.temp/multiplex-request/repo-2/schema.json
   ls -la
