@@ -18,12 +18,10 @@ case ${command} in
 
 "clone-repo-2")
   echo "cloning repo-2..."
-  ls -la
-  pwd
   rm -rf repo-1/.temp
   mkdir repo-1/.temp
   cd repo-1/.temp
-  git clone git@github.com:margostino/multiplex-request.git
+#  git clone git@github.com:margostino/multiplex-request.git
   ls -la
   pwd
   echo "repo-2 cloned!"
