@@ -36,8 +36,6 @@ case ${command} in
     git checkout ${GIT_BRANCH_REPOS}
   fi
 
-  echo "repo-1 branch: ${GIT_BRANCH_REPO_1}"
-  echo "repo-2 branch: ${GIT_BRANCH_REPO_2}"
   echo "repo-2 cloned!"
   ;;
 
@@ -46,6 +44,9 @@ case ${command} in
   mv repo-1/schema.json repo-1/.temp/multiplex-request/repo-2/schema.json
   cd repo-1/.temp/multiplex-request/repo-2
   ls -la
+  git add schema.json
+  git commit -m "update schema"
+  git push origin ${GIT_BRANCH_REPOS}
   echo "schema updated!"
   ;;
 
