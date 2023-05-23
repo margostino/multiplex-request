@@ -25,11 +25,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      - name: who am i?
-        run: |
-          whoami
-          sudo ls -al ~/.ssh
-        shell: bash
+      - uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: run tests REPO-1
         run: |
