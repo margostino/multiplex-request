@@ -43,5 +43,6 @@ jobs:
       - name: clone & update schema into REPO-2
         run: |
           ./repo-1/run clone-repo-2
+          pwd
           ls -la
         shell: bash
