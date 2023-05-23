@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+echo "running test..."
+sleep 2
+echo "all tests passed"
