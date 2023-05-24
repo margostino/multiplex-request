@@ -52,6 +52,7 @@ case ${command} in
   cd repo-1/.temp/multiplex-request/repo-2
 #  ls -la
   git add schema.json
+  git branch
   git commit -m "update schema"
   git push --set-upstream origin $GIT_BRANCH_REPO_2
   echo "schema updated!"
