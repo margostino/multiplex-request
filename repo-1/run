@@ -47,7 +47,6 @@ case ${command} in
 
 "update-schema")
   echo "updating schema..."
-  ls /home/runner/work/.temp
   git config --global user.email "multiplex-worker@margostino.com"
   git config --global user.name "multiplex-worker"
   mv repo-1/schema.json /home/runner/work/.temp/multiplex-request/repo-2/schema.json
