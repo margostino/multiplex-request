@@ -54,20 +54,25 @@ jobs:
           ./repo-1/run update-schema
         shell: bash
 
-  multiplex-request:
-    runs-on: ubuntu-latest
-    needs: build
-    if: needs.build.outputs.trigger_pull_request != ''
-    steps:
-      - uses: actions/checkout@v3
+      - name: create pull request (repo-2)
+        run: ./repo-1/run create-pull-request
+        shell: bash
+        env:
+          PR_TOKEN: ${{ secrets.PR_TOKEN }}
 
-      - name: create Pull Request in repo-2
-        uses: peter-evans/create-pull-request@v5.0.1
-        with:
-          commit-message: update schema
-          title: Update schema
-          body: Schema updated by Metadata
-          token: ${{ secrets.PR_TOKEN }}
-          base: master
-          push-to-fork: margostino/multiplex-request-demo
-          branch: '${{ needs.build.outputs.trigger_pull_request }}'
+#  multiplex-request:
+#    runs-on: ubuntu-latest
+#    needs: build
+#    if: needs.build.outputs.trigger_pull_request != ''
+#    steps:
+#      - uses: actions/checkout@v3
+#
+#      - name: create Pull Request in repo-2
+#        uses: peter-evans/create-pull-request@v5.0.1
+#        with:
+#          commit-message: update schema
+#          title: Update schema
+#          body: Schema updated by Metadata
+#          token: ${{ secrets.PR_TOKEN }}
+#          base: master
+#          branch: '${{ needs.build.outputs.trigger_pull_request }}'
