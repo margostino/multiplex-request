@@ -11,10 +11,10 @@ on:
 #    branches: [ "master" ]
   push:
     branches:
-      - 'id-*'
-  pull_request:
-    branches:
-      - 'id-*'
+      - 'id-r1-*'
+#  pull_request:
+#    branches:
+#      - 'id-r1-*'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -42,13 +42,13 @@ jobs:
           ./repo-1/run tests
         shell: bash
 
-      - name: generate schema REPO-1
+      - name: generate schema (repo-1)
         run: ./repo-1/run schema
         shell: bash
 
-      - name: clone & update schema into REPO-2
+      - name: clone & update schema (repo-2)
         run: |          
-          ./repo-1/run clone-repo-2
+          ./repo-1/run clone
           ./repo-1/run update-schema
         shell: bash
 

@@ -16,7 +16,7 @@ case ${command} in
   ./repo-1/scripts/generate-schema.sh
   ;;
 
-"clone-repo-2")
+"clone")
   echo "cloning repo-2..."
   export GIT_BRANCH_REPOS=$(git rev-parse --abbrev-ref HEAD)
   rm -rf repo-1/.temp
