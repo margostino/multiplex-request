@@ -23,11 +23,6 @@ case ${command} in
   echo "cloning repo-2..."
   export GIT_BRANCH_REPO_1=$(git rev-parse --abbrev-ref HEAD)
   cd /home/runner/work/_temp
-  ls -la
-  pwd
-  rm -rf repo-1/.temp
-  mkdir repo-1/.temp
-  cd repo-1/.temp
   git clone git@github.com:margostino/multiplex-request.git
   cd multiplex-request
 
@@ -53,9 +48,9 @@ case ${command} in
   echo "updating schema..."
   git config --global user.email "multiplex-worker@margostino.com"
   git config --global user.name "multiplex-worker"
-  mv repo-1/schema.json repo-1/.temp/multiplex-request/repo-2/schema.json
-  cd repo-1/.temp/multiplex-request/repo-2
-  git add schema.json
+  mv repo-1/schema.json /home/runner/work/_temp/multiplex-request/repo-2/schema.json
+  cd /home/runner/work/_temp/multiplex-request
+  git add repo-2/schema.json
   git commit -m "update schema"
   export GIT_BRANCH_REPO_2=$(git rev-parse --abbrev-ref HEAD)
   git push --set-upstream origin $GIT_BRANCH_REPO_2
