@@ -54,7 +54,7 @@ case ${command} in
   git add schema.json
   git branch
   git commit -m "update schema"
-#  git push --set-upstream origin $GIT_BRANCH_REPO_2
+  git push --set-upstream origin id-r2-1234-feature
   echo "schema updated!"
   ;;
 
