@@ -23,6 +23,7 @@ case ${command} in
   echo "cloning repo-2..."
   export GIT_BRANCH_REPO_1=$(git rev-parse --abbrev-ref HEAD)
   cd ..
+  cd ..
   ls -la
   pwd
   rm -rf repo-1/.temp
