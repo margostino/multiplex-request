@@ -57,7 +57,7 @@ jobs:
   multiplex-request:
     runs-on: ubuntu-latest
     needs: build
-    if: needs.build.outputs.trigger_pull_request == 'true'
+    if: needs.build.outputs.trigger_pull_request != ''
     steps:
       - uses: actions/checkout@v3
 
@@ -67,4 +67,4 @@ jobs:
           commit-message: update authors
           title: Update AUTHORS
           body: Credit new contributors by updating AUTHORS
-          branch: 'id-${{ github.event.inputs.id }}'
+          branch: 'id-${{ needs.build.outputs.trigger_pull_request }}'
