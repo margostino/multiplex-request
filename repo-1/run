@@ -53,7 +53,7 @@ case ${command} in
   ls -la
   git add schema.json
   git commit -m "update schema"
-  git push origin ${GIT_BRANCH_REPOS}
+  git push --set-upstream origin $GIT_BRANCH_REPO_2
   echo "schema updated!"
   ;;
 
