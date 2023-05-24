@@ -50,11 +50,9 @@ case ${command} in
   git config --global user.name "multiplex-worker"
   mv repo-1/schema.json repo-1/.temp/multiplex-request/repo-2/schema.json
   cd repo-1/.temp/multiplex-request/repo-2
-#  ls -la
   git add schema.json
-  git branch
   git commit -m "update schema"
-  echo "pushing branch $GIT_BRANCH_REPO_2"
+  export GIT_BRANCH_REPO_2=$(git rev-parse --abbrev-ref HEAD)
   git push --set-upstream origin $GIT_BRANCH_REPO_2
   echo "schema updated!"
   ;;
