@@ -67,4 +67,5 @@ jobs:
           commit-message: update authors
           title: Update AUTHORS
           body: Credit new contributors by updating AUTHORS
+          token: ${{ secrets.PR_TOKEN }}
           branch: '${{ needs.build.outputs.trigger_pull_request }}'
