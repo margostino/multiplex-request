@@ -66,7 +66,7 @@ case ${command} in
   cd /home/runner/work/.temp/multiplex-request
   export GIT_BRANCH_REPO_2=$(git rev-parse --abbrev-ref HEAD)
   git branch
-  response=$(curl --write-out '%{http_code}' --silent --output /dev/null -L \
+  response=$(curl -L \
     -X POST \
     -H "Accept: application/vnd.github+json" \
     -H "Authorization: Bearer ${PR_TOKEN}"\
