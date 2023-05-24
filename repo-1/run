@@ -40,6 +40,7 @@ case ${command} in
   else
     echo "branch ${GIT_BRANCH_REPO_2} already exists in repo-2"
     git checkout ${GIT_BRANCH_REPO_2}
+    echo "trigger_pull_request=''" >> "$GITHUB_OUTPUT"
   fi
 
   echo "repo-2 cloned!"
