@@ -26,6 +26,7 @@ case ${command} in
   cd /home/runner/work/.temp
   git clone git@github.com:margostino/multiplex-request.git
   cd multiplex-request
+  git checkout master
 
   export GIT_BRANCH_REPO_2=${GIT_BRANCH_REPO_1/r1/r2}
 
@@ -34,8 +35,8 @@ case ${command} in
   if [[ ${BRANCH_EXIST_IN_REPO_2} == "error"* ]]; then
     echo "branch ${GIT_BRANCH_REPO_2} does not exist in repo-2"
     git checkout -b ${GIT_BRANCH_REPO_2}
-    echo "trigger_pull_request=${GIT_BRANCH_REPO_2}" >> "$GITHUB_OUTPUT"
     echo "branch created"
+    echo "trigger_pull_request=${GIT_BRANCH_REPO_2}" >> "$GITHUB_OUTPUT"
   else
     echo "branch ${GIT_BRANCH_REPO_2} already exists in repo-2"
     git checkout ${GIT_BRANCH_REPO_2}
@@ -49,8 +50,8 @@ case ${command} in
   echo "updating schema..."
   git config --global user.email "multiplex-worker@margostino.com"
   git config --global user.name "multiplex-worker"
-  mv repo-1/schema.json /home/runner/work/.temp/multiplex-request/repo-2/schema.json
   cd /home/runner/work/.temp/multiplex-request
+  mv /home/runner/work/multiplex-request/multiplex-request/repo-1/schema.json /home/runner/work/.temp/multiplex-request/repo-2/schema.json
   git add repo-2/schema.json
   git commit -m "update schema"
   export GIT_BRANCH_REPO_2=$(git rev-parse --abbrev-ref HEAD)
