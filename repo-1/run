@@ -55,7 +55,7 @@ case ${command} in
   export GIT_BRANCH_REPO_2=$(git rev-parse --abbrev-ref HEAD)
   git push --set-upstream origin $GIT_BRANCH_REPO_2
   echo "schema updated!"
-  echo "trigger_pull_request=true" >> "$GITHUB_OUTPUT"
+  echo "trigger_pull_request=false" >> "$GITHUB_OUTPUT"
   ;;
 
 "build")
