@@ -32,12 +32,12 @@ case ${command} in
   echo "exist? ${BRANCH_EXIST_IN_REPO_2}"
   if [[ ${BRANCH_EXIST_IN_REPO_2} == "error"* ]]; then
     echo "branch ${GIT_BRANCH_REPO_2} does not exist in repo-2"
-    git checkout -b ${GIT_BRANCH_REPO_2}
+#    git checkout -b ${GIT_BRANCH_REPO_2}
     echo "trigger_pull_request=${GIT_BRANCH_REPO_2}" >> "$GITHUB_OUTPUT"
     echo "branch created"
   else
     echo "branch ${GIT_BRANCH_REPO_2} already exists in repo-2"
-    git checkout ${GIT_BRANCH_REPO_2}
+#    git checkout ${GIT_BRANCH_REPO_2}
     echo "trigger_pull_request=''" >> "$GITHUB_OUTPUT"
   fi
 
