@@ -68,6 +68,6 @@ jobs:
           title: Update schema
           body: Schema updated by Metadata
           token: ${{ secrets.PR_TOKEN }}
-#          path: /home/runner/work/.temp/multiplex-request
           base: master
+          push-to-fork: margostino/multiplex-request-demo
           branch: '${{ needs.build.outputs.trigger_pull_request }}'
