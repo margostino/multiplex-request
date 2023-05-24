@@ -16,25 +16,39 @@ case ${command} in
   ./repo-1/scripts/generate-schema.sh
   ;;
 
-"clone-repo-2")
+"clone")
   echo "cloning repo-2..."
-  export GIT_BRANCH_REPO_1=$(git rev-parse --abbrev-ref HEAD)
+  export GIT_BRANCH_REPOS=$(git rev-parse --abbrev-ref HEAD)
   rm -rf repo-1/.temp
   mkdir repo-1/.temp
   cd repo-1/.temp
   git clone git@github.com:margostino/multiplex-request.git
   cd multiplex-request
-  export GIT_BRANCH_REPO_2=$(git rev-parse --abbrev-ref HEAD)
-  echo "repo-1 branch: ${GIT_BRANCH_REPO_1}"
-  echo "repo-2 branch: ${GIT_BRANCH_REPO_2}"
+
+  BRANCH_EXIST_IN_REPO_2=$(git checkout ${GIT_BRANCH_REPOS} 2>&1)
+  echo "exist? ${BRANCH_EXIST_IN_REPO_2}"
+  if [[ ${BRANCH_EXIST_IN_REPO_2} == "error"* ]]; then
+    echo "branch ${GIT_BRANCH_REPOS} does not exist in repo-2"
+    git checkout -b ${GIT_BRANCH_REPOS}
+    echo "branch created"
+  else
+    echo "branch ${GIT_BRANCH_REPOS} already exists in repo-2"
+    git checkout ${GIT_BRANCH_REPOS}
+  fi
+
   echo "repo-2 cloned!"
   ;;
 
 "update-schema")
   echo "updating schema..."
+  git config --global user.email "multiplex-worker@margostino.com"
+  git config --global user.name "multiplex-worker"
   mv repo-1/schema.json repo-1/.temp/multiplex-request/repo-2/schema.json
   cd repo-1/.temp/multiplex-request/repo-2
   ls -la
+  git add schema.json
+  git commit -m "update schema"
+  git push origin ${GIT_BRANCH_REPOS}
   echo "schema updated!"
   ;;
 
